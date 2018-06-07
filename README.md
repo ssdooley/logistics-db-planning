@@ -1,3 +1,3 @@
 # Process Planning Notes
 
-[ ] - Add Funding Acccount Infrastructure
+* Add Funding Acccount Infrastructure
