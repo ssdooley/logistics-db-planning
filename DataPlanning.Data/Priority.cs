@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace DataPlanning.Data
 {
-    public class Class1
+    public class Priority
     {
+        public int Id { get; set; }
+        public string Label { get; set; }
+        public List<Request> Requests { get; set; }
     }
 }
