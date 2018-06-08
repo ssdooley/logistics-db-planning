@@ -1,12 +1,12 @@
 ﻿namespace DataPlanning.Data
 {
-    public class Approver
+    public class ApprovalTemplateGroup
     {
         public int Id { get; set; }
         public int ApprovalGroupId { get; set; }
-        public int UserId { get; set; }
+        public int ApprovalTemplateId { get; set; }
 
         public ApprovalGroup ApprovalGroup { get; set; }
-        public User User { get; set; }
+        public ApprovalTemplate ApprovalTemplate { get; set; }
     }
 }

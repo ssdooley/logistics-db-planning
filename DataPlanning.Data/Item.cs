@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataPlanning.Data
+﻿namespace DataPlanning.Data
 {
     public class Item
     {
@@ -30,10 +24,10 @@ namespace DataPlanning.Data
         public PropertyRecord PropertyRecord { get; set; }
     }
 
+
     public class HardwareItem : Item
     {
         public int PropertyRecordId { get; set; }
-        public string SerialNumber { get; set; }
         public string ServiceTag { get; set; }
         public string MacAddress { get; set; }
         public string Location { get; set; }

@@ -1,16 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataPlanning.Data
 {
     public class AppDbContext : DbContext
     {
         public DbSet<ApprovalGroup> ApprovalGroups { get; set; }
+        public DbSet<ApprovalTemplate> ApprovalTemplates { get; set; }
+        public DbSet<ApprovalTemplateGroup> ApprovalTemplateGroups { get; set; }
         public DbSet<Approver> Approvers { get; set; }
+        public DbSet<Attachment> Attachments { get; set; }
+        public DbSet<FundingAccount> FundingAccounts { get; set; }
+        public DbSet<FundTransaction> FundTransactions { get; set; }
+        public DbSet<FundUser> FundUsers { get; set; }
+        public DbSet<HardwareItem> HardwareItems { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<ItemCategory> ItemCategories { get; set; }
         public DbSet<ItemGroup> ItemGroups { get; set; }
@@ -18,6 +21,7 @@ namespace DataPlanning.Data
         public DbSet<ItemGroupCategory> ItemGroupCategories { get; set; }
         public DbSet<LogUser> LogUsers { get; set; }
         public DbSet<Manufacturer> Manufacturers { get; set; }
+        public DbSet<NsnItem> NsnItems { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderAttachment> OrderAttachments { get; set; }
         public DbSet<Priority> Priorities { get; set; }
@@ -26,7 +30,9 @@ namespace DataPlanning.Data
         public DbSet<Request> Requests { get; set; }
         public DbSet<RequestAttachment> RequestAttachments { get; set; }
         public DbSet<RequestItem> RequestItems { get; set; }
+        public DbSet<SerializedItem> SerializedItems { get; set; }
         public DbSet<Site> Site { get; set; }
+        public DbSet<SoftwareItem> SoftwareItems { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Vendor> Vendors { get; set; }
 
@@ -37,6 +43,12 @@ namespace DataPlanning.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Attachment>()
+                .HasDiscriminator<string>("AttachmentType")
+                .HasValue<Attachment>("Base")
+                .HasValue<OrderAttachment>("Order")
+                .HasValue<RequestAttachment>("Request");
+
             modelBuilder.Entity<Item>()
                 .HasDiscriminator<string>("ItemType")
                 .HasValue<Item>("Base")

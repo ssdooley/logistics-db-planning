@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataPlanning.Data
 {
@@ -22,6 +19,7 @@ namespace DataPlanning.Data
         public User User { get; set; }
         public Vendor Vendor { get; set; }
 
+        public List<FundTransaction> FundTransactions { get; set; }
         public List<Item> Items { get; set; }
         public List<OrderAttachment> OrderAttachments { get; set; }
     }

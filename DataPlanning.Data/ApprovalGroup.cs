@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DataPlanning.Data
 {
@@ -13,6 +9,7 @@ namespace DataPlanning.Data
         public bool IsLocal { get; set; }
         public bool IsCommander { get; set; }
 
+        public List<ApprovalTemplateGroup> ApprovalTemplateGroups { get; set; }
         public List<Approver> Approvers { get; set; }
         public List<ItemGroupApproval> ItemGroupApprovals { get; set; }
     }
