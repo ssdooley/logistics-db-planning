@@ -10,8 +10,6 @@
     * NonSerialized Item Hand Receipts
 * Destruction / Decommissioning of Items
 
-***
-
 ## Developed
 * Core 
     * `LogUser.cs`
@@ -42,8 +40,6 @@
     * `Item.cs`
     * `PropertyRecord.cs`
     * `PropertyCustodian.cs`
-
-***
 
 ## Planning Notes
 * Plan for how deletion of rows would affect existing records, and how to best mitigate side effects
