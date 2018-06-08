@@ -134,7 +134,17 @@
     <Compile Include="FundUser.cs" />
     <Compile Include="ItemCategory.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="ItemReceipt.cs" />
     <Compile Include="Manufacturer.cs" />
+    <Compile Include="Migrations\20180608152405_initial.cs" />
+    <Compile Include="Migrations\20180608152405_initial.designer.cs">
+      <DependentUpon>20180608152405_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180608163107_item-group-user.cs" />
+    <Compile Include="Migrations\20180608163107_item-group-user.designer.cs">
+      <DependentUpon>20180608163107_item-group-user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="PropertyCustodian.cs" />
     <Compile Include="PropertyRecord.cs" />
     <Compile Include="ItemGroup.cs" />

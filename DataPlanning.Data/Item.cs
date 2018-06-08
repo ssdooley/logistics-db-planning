@@ -1,9 +1,11 @@
-﻿namespace DataPlanning.Data
+﻿using System.Collections.Generic;
+
+namespace DataPlanning.Data
 {
     public class Item
     {
         public int Id { get; set; }
-        public int OrderId { get; set; }
+        public int? OrderId { get; set; }
         public int ItemCategoryId { get; set; }
         public int ManufacturerId { get; set; }
         public string Model { get; set; }
@@ -13,6 +15,8 @@
         public Order Order { get; set; }
         public ItemCategory ItemCategory { get; set; }
         public Manufacturer Manufacturer { get; set; }
+
+        public List<ItemReceipt> ItemReceipts { get; set; }
     }
 
     public class SerializedItem : Item

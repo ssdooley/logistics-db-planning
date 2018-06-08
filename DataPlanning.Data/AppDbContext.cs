@@ -19,6 +19,7 @@ namespace DataPlanning.Data
         public DbSet<ItemGroup> ItemGroups { get; set; }
         public DbSet<ItemGroupApproval> ItemGroupApprovals { get; set; }
         public DbSet<ItemGroupCategory> ItemGroupCategories { get; set; }
+        public DbSet<ItemReceipt> ItemReceipts { get; set; }
         public DbSet<LogUser> LogUsers { get; set; }
         public DbSet<Manufacturer> Manufacturers { get; set; }
         public DbSet<NsnItem> NsnItems { get; set; }
