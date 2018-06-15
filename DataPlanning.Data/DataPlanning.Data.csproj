@@ -132,6 +132,8 @@
     <Compile Include="FundingAccount.cs" />
     <Compile Include="FundTransaction.cs" />
     <Compile Include="FundUser.cs" />
+    <Compile Include="Inventory.cs" />
+    <Compile Include="InventoryItem.cs" />
     <Compile Include="ItemCategory.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemReceipt.cs" />

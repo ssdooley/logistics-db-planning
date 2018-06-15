@@ -16,6 +16,7 @@ namespace DataPlanning.Data
         public ItemCategory ItemCategory { get; set; }
         public Manufacturer Manufacturer { get; set; }
 
+        public List<InventoryItem> InventoryItems { get; set; }
         public List<ItemReceipt> ItemReceipts { get; set; }
     }
 

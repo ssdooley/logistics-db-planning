@@ -13,6 +13,7 @@ namespace DataPlanning.Data
 
         public List<Approver> Approvers { get; set; }
         public List<FundUser> FundUsers { get; set; }
+        public List<Inventory> Inventories { get; set; }
         public List<ItemGroup> ItemGroups { get; set; }
         public List<ItemGroupApproval> ItemGroupApprovals { get; set; }
         public List<ItemReceipt> ItemReceipts { get; set; }
