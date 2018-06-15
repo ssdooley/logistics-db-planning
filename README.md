@@ -1,15 +1,7 @@
 # Process Planning Notes
 
 ## Planning Notes
-* Plan for how deletion of rows would affect existing records, and how to best mitigate side effects  
-
-## In Progress  
-
-* Inventory Management for Serialized Items / Hardware
-* Serialized Item / Hardware Transfers
-* Site NonSerialized Item Management
-    * NonSerialized Item Hand Receipts
-* Destruction / Decommissioning of Items
+* Plan for how deletion of rows would affect existing records, and how to best mitigate side effects 
 
 ## Developed  
 
@@ -108,4 +100,52 @@
 * `Site.cs`
 * `User.cs`  
 
-![property-records-diagram](./diagrams/property-records-diagram.png)
+![property-records-diagram](./diagrams/property-records-diagram.png)  
+
+***
+
+### Inventory
+* `Inventory.cs`
+* `InventoryItem.cs`
+#### Supplemental Tables
+* `Item.cs`
+* `PropertyRecords.cs`
+* `User.cs`
+
+![inventory-diagram](./diagrams/inventory-diagram.png)  
+
+***
+
+### Transfers
+* `Transfer.cs`
+* `TransferItem.cs`
+* `TransferReceipt.cs`
+#### Supplemental Tables
+* `Item.cs`
+* `PropertyRecord.cs`
+* `User.cs`  
+
+![transfer-diagram](./diagrams/transfer-diagram.png)  
+
+***
+
+### Hand Receipts
+* `HandReceipt.cs`
+* `HandReceiptItem.cs`
+* `HandReceiptVerification.cs`
+#### Supplemental Tables
+* `Item.cs`
+* `Site.cs`
+* `User.cs`  
+
+![hand-receipt-diagram](./diagrams/hand-receipt-diagram.png)  
+
+***
+
+### Item Decomission
+* `ItemDecomission.cs`
+#### Supplemental Tables
+* `Item.cs`
+* `User.cs`  
+
+![item-decomission-diagram](./diagrams/item-decomission-diagram.png)
