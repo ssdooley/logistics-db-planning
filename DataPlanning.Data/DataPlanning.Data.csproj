@@ -132,10 +132,14 @@
     <Compile Include="FundingAccount.cs" />
     <Compile Include="FundTransaction.cs" />
     <Compile Include="FundUser.cs" />
+    <Compile Include="HandReceipt.cs" />
+    <Compile Include="HandReceiptItem.cs" />
+    <Compile Include="HandReceiptVerification.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="InventoryItem.cs" />
     <Compile Include="ItemCategory.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="ItemDecomission.cs" />
     <Compile Include="ItemReceipt.cs" />
     <Compile Include="Manufacturer.cs" />
     <Compile Include="Migrations\20180608152405_initial.cs" />
@@ -145,6 +149,18 @@
     <Compile Include="Migrations\20180608163107_item-group-user.cs" />
     <Compile Include="Migrations\20180608163107_item-group-user.designer.cs">
       <DependentUpon>20180608163107_item-group-user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180615134835_property-transfer.cs" />
+    <Compile Include="Migrations\20180615134835_property-transfer.designer.cs">
+      <DependentUpon>20180615134835_property-transfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180615140738_hand-receipts.cs" />
+    <Compile Include="Migrations\20180615140738_hand-receipts.designer.cs">
+      <DependentUpon>20180615140738_hand-receipts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180615141203_item-decomissions.cs" />
+    <Compile Include="Migrations\20180615141203_item-decomissions.designer.cs">
+      <DependentUpon>20180615141203_item-decomissions.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="PropertyCustodian.cs" />
@@ -159,6 +175,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request.cs" />
     <Compile Include="Site.cs" />
+    <Compile Include="Transfer.cs" />
+    <Compile Include="TransferItem.cs" />
+    <Compile Include="TransferReceipt.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Vendor.cs" />
   </ItemGroup>

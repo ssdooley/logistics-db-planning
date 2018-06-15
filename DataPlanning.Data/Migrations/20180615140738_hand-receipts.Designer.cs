@@ -4,14 +4,16 @@ using DataPlanning.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataPlanning.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180615140738_hand-receipts")]
+    partial class handreceipts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -311,8 +313,6 @@ namespace DataPlanning.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("IsDecomissioned");
-
                     b.Property<int>("ItemCategoryId");
 
                     b.Property<string>("ItemType")
@@ -354,30 +354,6 @@ namespace DataPlanning.Data.Migrations
                     b.HasIndex("ItemGroupCategoryId");
 
                     b.ToTable("ItemCategory");
-                });
-
-            modelBuilder.Entity("DataPlanning.Data.ItemDecomission", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DecomissionDate");
-
-                    b.Property<int>("ItemId");
-
-                    b.Property<string>("Remarks");
-
-                    b.Property<int>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ItemId")
-                        .IsUnique();
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("ItemDecomission");
                 });
 
             modelBuilder.Entity("DataPlanning.Data.ItemGroup", b =>
@@ -1054,19 +1030,6 @@ namespace DataPlanning.Data.Migrations
                     b.HasOne("DataPlanning.Data.ItemGroupCategory", "ItemGroupCategory")
                         .WithMany("ItemCategories")
                         .HasForeignKey("ItemGroupCategoryId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("DataPlanning.Data.ItemDecomission", b =>
-                {
-                    b.HasOne("DataPlanning.Data.Item", "Item")
-                        .WithOne("ItemDecomission")
-                        .HasForeignKey("DataPlanning.Data.ItemDecomission", "ItemId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("DataPlanning.Data.User", "User")
-                        .WithMany("ItemDecomissions")
-                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

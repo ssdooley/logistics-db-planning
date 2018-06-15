@@ -11,13 +11,16 @@ namespace DataPlanning.Data
         public string Model { get; set; }
         public string Nsn { get; set; }
         public string ItemType { get; set; }
+        public bool IsDecomissioned { get; set; }
 
         public Order Order { get; set; }
         public ItemCategory ItemCategory { get; set; }
+        public ItemDecomission ItemDecomission { get; set; }
         public Manufacturer Manufacturer { get; set; }
 
         public List<InventoryItem> InventoryItems { get; set; }
         public List<ItemReceipt> ItemReceipts { get; set; }
+        public List<TransferItem> TransferItems { get; set; }
     }
 
     public class SerializedItem : Item
@@ -55,5 +58,7 @@ namespace DataPlanning.Data
         public int Quantity { get; set; }
 
         public Site Site { get; set; }
+
+        public List<HandReceiptItem> HandReceiptItems { get; set; }
     }
 }

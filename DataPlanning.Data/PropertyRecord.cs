@@ -14,5 +14,7 @@ namespace DataPlanning.Data
         public List<Inventory> Inventories { get; set; }
         public List<PropertyCustodian> PropertyCustodians { get; set; }
         public List<SerializedItem> SerializedItems { get; set; }
+        public List<Transfer> DestinationTransfers { get; set; }
+        public List<Transfer> OriginTransfers { get; set; }
     }
 }

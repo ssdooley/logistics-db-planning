@@ -8,6 +8,7 @@ namespace DataPlanning.Data
         public string Name { get; set; }
 
         public List<ApprovalTemplate> ApprovalTemplates { get; set; }
+        public List<HandReceipt> HandReceipts { get; set; }
         public List<ItemGroup> ItemGroups { get; set; }
         public List<LogUser> LogUsers { get; set; }
         public List<NsnItem> NsnItems { get; set; }

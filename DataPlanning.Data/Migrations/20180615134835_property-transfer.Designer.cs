@@ -4,14 +4,16 @@ using DataPlanning.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataPlanning.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180615134835_property-transfer")]
+    partial class propertytransfer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -180,81 +182,6 @@ namespace DataPlanning.Data.Migrations
                     b.ToTable("FundUser");
                 });
 
-            modelBuilder.Entity("DataPlanning.Data.HandReceipt", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DateCreated");
-
-                    b.Property<string>("Remarks");
-
-                    b.Property<int>("SiteId");
-
-                    b.Property<int>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SiteId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("HandReceipt");
-                });
-
-            modelBuilder.Entity("DataPlanning.Data.HandReceiptItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("HandReceiptId");
-
-                    b.Property<int>("ItemId");
-
-                    b.Property<int?>("NsnItemId");
-
-                    b.Property<int>("Quantity");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("HandReceiptId");
-
-                    b.HasIndex("NsnItemId");
-
-                    b.ToTable("HandReceiptItem");
-                });
-
-            modelBuilder.Entity("DataPlanning.Data.HandReceiptVerification", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DateModified");
-
-                    b.Property<DateTime?>("DateVerified");
-
-                    b.Property<int>("HandReceiptId");
-
-                    b.Property<int>("LogUserId");
-
-                    b.Property<int?>("RecordUserId");
-
-                    b.Property<string>("Remarks");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("HandReceiptId");
-
-                    b.HasIndex("LogUserId");
-
-                    b.HasIndex("RecordUserId");
-
-                    b.ToTable("HandReceiptVerification");
-                });
-
             modelBuilder.Entity("DataPlanning.Data.Inventory", b =>
                 {
                     b.Property<int>("Id")
@@ -311,8 +238,6 @@ namespace DataPlanning.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("IsDecomissioned");
-
                     b.Property<int>("ItemCategoryId");
 
                     b.Property<string>("ItemType")
@@ -354,30 +279,6 @@ namespace DataPlanning.Data.Migrations
                     b.HasIndex("ItemGroupCategoryId");
 
                     b.ToTable("ItemCategory");
-                });
-
-            modelBuilder.Entity("DataPlanning.Data.ItemDecomission", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DecomissionDate");
-
-                    b.Property<int>("ItemId");
-
-                    b.Property<string>("Remarks");
-
-                    b.Property<int>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ItemId")
-                        .IsUnique();
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("ItemDecomission");
                 });
 
             modelBuilder.Entity("DataPlanning.Data.ItemGroup", b =>
@@ -961,50 +862,6 @@ namespace DataPlanning.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("DataPlanning.Data.HandReceipt", b =>
-                {
-                    b.HasOne("DataPlanning.Data.Site", "Site")
-                        .WithMany("HandReceipts")
-                        .HasForeignKey("SiteId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("DataPlanning.Data.User", "User")
-                        .WithMany("HandReceipts")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("DataPlanning.Data.HandReceiptItem", b =>
-                {
-                    b.HasOne("DataPlanning.Data.HandReceipt", "HandReceipt")
-                        .WithMany("HandReceiptItems")
-                        .HasForeignKey("HandReceiptId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("DataPlanning.Data.NsnItem", "NsnItem")
-                        .WithMany("HandReceiptItems")
-                        .HasForeignKey("NsnItemId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("DataPlanning.Data.HandReceiptVerification", b =>
-                {
-                    b.HasOne("DataPlanning.Data.HandReceipt", "HandReceipt")
-                        .WithMany("HandReceiptVerifications")
-                        .HasForeignKey("HandReceiptId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("DataPlanning.Data.User", "LogUser")
-                        .WithMany("LogHandReceiptVerifications")
-                        .HasForeignKey("LogUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("DataPlanning.Data.User", "RecordUser")
-                        .WithMany("RecordHandReceiptVerifications")
-                        .HasForeignKey("RecordUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
             modelBuilder.Entity("DataPlanning.Data.Inventory", b =>
                 {
                     b.HasOne("DataPlanning.Data.PropertyRecord", "PropertyRecord")
@@ -1054,19 +911,6 @@ namespace DataPlanning.Data.Migrations
                     b.HasOne("DataPlanning.Data.ItemGroupCategory", "ItemGroupCategory")
                         .WithMany("ItemCategories")
                         .HasForeignKey("ItemGroupCategoryId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("DataPlanning.Data.ItemDecomission", b =>
-                {
-                    b.HasOne("DataPlanning.Data.Item", "Item")
-                        .WithOne("ItemDecomission")
-                        .HasForeignKey("DataPlanning.Data.ItemDecomission", "ItemId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("DataPlanning.Data.User", "User")
-                        .WithMany("ItemDecomissions")
-                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

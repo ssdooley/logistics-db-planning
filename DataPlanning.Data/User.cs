@@ -13,7 +13,11 @@ namespace DataPlanning.Data
 
         public List<Approver> Approvers { get; set; }
         public List<FundUser> FundUsers { get; set; }
+        public List<HandReceipt> HandReceipts { get; set; }
+        public List<HandReceiptVerification> LogHandReceiptVerifications { get; set; }
+        public List<HandReceiptVerification> RecordHandReceiptVerifications { get; set; }
         public List<Inventory> Inventories { get; set; }
+        public List<ItemDecomission> ItemDecomissions { get; set; }
         public List<ItemGroup> ItemGroups { get; set; }
         public List<ItemGroupApproval> ItemGroupApprovals { get; set; }
         public List<ItemReceipt> ItemReceipts { get; set; }
@@ -21,5 +25,7 @@ namespace DataPlanning.Data
         public List<Order> Orders { get; set; }
         public List<PropertyCustodian> PropertyCustodians { get; set; }
         public List<Request> Requests { get; set; }
+        public List<Transfer> Transfers { get; set; }
+        public List<TransferReceipt> TransferReceipts { get; set; }
     }
 }

@@ -13,9 +13,13 @@ namespace DataPlanning.Data
         public DbSet<FundingAccount> FundingAccounts { get; set; }
         public DbSet<FundTransaction> FundTransactions { get; set; }
         public DbSet<FundUser> FundUsers { get; set; }
+        public DbSet<HandReceipt> HandReceipts { get; set; }
+        public DbSet<HandReceiptItem> HandReceiptItems { get; set; }
+        public DbSet<HandReceiptVerification> HandReceiptVerifications { get; set; }
         public DbSet<HardwareItem> HardwareItems { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<ItemCategory> ItemCategories { get; set; }
+        public DbSet<ItemDecomission> ItemDecomissions { get; set; }
         public DbSet<ItemGroup> ItemGroups { get; set; }
         public DbSet<ItemGroupApproval> ItemGroupApprovals { get; set; }
         public DbSet<ItemGroupCategory> ItemGroupCategories { get; set; }
@@ -34,6 +38,9 @@ namespace DataPlanning.Data
         public DbSet<SerializedItem> SerializedItems { get; set; }
         public DbSet<Site> Site { get; set; }
         public DbSet<SoftwareItem> SoftwareItems { get; set; }
+        public DbSet<Transfer> Transfers { get; set; }
+        public DbSet<TransferItem> TransferItems { get; set; }
+        public DbSet<TransferReceipt> TransferReceipts { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Vendor> Vendors { get; set; }
 
@@ -57,6 +64,29 @@ namespace DataPlanning.Data
                 .HasValue<SerializedItem>("Serialized")
                 .HasValue<HardwareItem>("Hardware")
                 .HasValue<SoftwareItem>("Software");
+
+            modelBuilder.Entity<Transfer>()
+                .HasOne(x => x.DestinationRecord)
+                .WithMany(x => x.DestinationTransfers)
+                .HasForeignKey(x => x.DestinationRecordId)
+                .IsRequired();
+
+            modelBuilder.Entity<Transfer>()
+                .HasOne(x => x.OriginRecord)
+                .WithMany(x => x.OriginTransfers)
+                .HasForeignKey(x => x.OriginRecordId)
+                .IsRequired();
+
+            modelBuilder.Entity<HandReceiptVerification>()
+                .HasOne(x => x.LogUser)
+                .WithMany(x => x.LogHandReceiptVerifications)
+                .HasForeignKey(x => x.LogUserId)
+                .IsRequired();
+
+            modelBuilder.Entity<HandReceiptVerification>()
+                .HasOne(x => x.RecordUser)
+                .WithMany(x => x.RecordHandReceiptVerifications)
+                .HasForeignKey(x => x.RecordUserId);
 
             foreach (var ent in modelBuilder.Model.GetEntityTypes().Select(x => x.Name))
             {
