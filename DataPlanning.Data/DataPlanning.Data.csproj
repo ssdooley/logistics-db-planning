@@ -162,6 +162,10 @@
     <Compile Include="Migrations\20180615141203_item-decomissions.designer.cs">
       <DependentUpon>20180615141203_item-decomissions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20180615153727_inventory-log-user.cs" />
+    <Compile Include="Migrations\20180615153727_inventory-log-user.designer.cs">
+      <DependentUpon>20180615153727_inventory-log-user.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="PropertyCustodian.cs" />
     <Compile Include="PropertyRecord.cs" />

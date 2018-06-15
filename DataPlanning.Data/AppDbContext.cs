@@ -65,6 +65,22 @@ namespace DataPlanning.Data
                 .HasValue<HardwareItem>("Hardware")
                 .HasValue<SoftwareItem>("Software");
 
+            modelBuilder.Entity<HandReceiptVerification>()
+                .HasOne(x => x.LogUser)
+                .WithMany(x => x.LogHandReceiptVerifications)
+                .HasForeignKey(x => x.LogUserId)
+                .IsRequired();
+
+            modelBuilder.Entity<HandReceiptVerification>()
+                .HasOne(x => x.RecordUser)
+                .WithMany(x => x.RecordHandReceiptVerifications)
+                .HasForeignKey(x => x.RecordUserId);
+
+            modelBuilder.Entity<Inventory>()
+                .HasOne(x => x.LogUser)
+                .WithMany(x => x.LogInventories)
+                .HasForeignKey(x => x.LogUserId);
+
             modelBuilder.Entity<Transfer>()
                 .HasOne(x => x.DestinationRecord)
                 .WithMany(x => x.DestinationTransfers)
@@ -76,17 +92,6 @@ namespace DataPlanning.Data
                 .WithMany(x => x.OriginTransfers)
                 .HasForeignKey(x => x.OriginRecordId)
                 .IsRequired();
-
-            modelBuilder.Entity<HandReceiptVerification>()
-                .HasOne(x => x.LogUser)
-                .WithMany(x => x.LogHandReceiptVerifications)
-                .HasForeignKey(x => x.LogUserId)
-                .IsRequired();
-
-            modelBuilder.Entity<HandReceiptVerification>()
-                .HasOne(x => x.RecordUser)
-                .WithMany(x => x.RecordHandReceiptVerifications)
-                .HasForeignKey(x => x.RecordUserId);
 
             foreach (var ent in modelBuilder.Model.GetEntityTypes().Select(x => x.Name))
             {
