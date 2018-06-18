@@ -4,14 +4,16 @@ using DataPlanning.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataPlanning.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180618131425_rename-decommission")]
+    partial class renamedecommission
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -386,8 +388,6 @@ namespace DataPlanning.Data.Migrations
 
                     b.Property<DateTime>("DecommissionDate");
 
-                    b.Property<bool>("IsVerified");
-
                     b.Property<int>("ItemId");
 
                     b.Property<string>("Remarks");
@@ -402,30 +402,6 @@ namespace DataPlanning.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("ItemDecommission");
-                });
-
-            modelBuilder.Entity("DataPlanning.Data.ItemDecommissionVerification", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ItemDecommissionId");
-
-                    b.Property<string>("Remarks");
-
-                    b.Property<int>("UserId");
-
-                    b.Property<DateTime>("VerificationDate");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ItemDecommissionId")
-                        .IsUnique();
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("ItemDecommissionVerification");
                 });
 
             modelBuilder.Entity("DataPlanning.Data.ItemGroup", b =>
@@ -1127,19 +1103,6 @@ namespace DataPlanning.Data.Migrations
 
                     b.HasOne("DataPlanning.Data.User", "User")
                         .WithMany("ItemDecommissions")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("DataPlanning.Data.ItemDecommissionVerification", b =>
-                {
-                    b.HasOne("DataPlanning.Data.ItemDecommission", "ItemDecommission")
-                        .WithOne("ItemDecommissionVerification")
-                        .HasForeignKey("DataPlanning.Data.ItemDecommissionVerification", "ItemDecommissionId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("DataPlanning.Data.User", "User")
-                        .WithMany("ItemDecommissionVerifications")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });

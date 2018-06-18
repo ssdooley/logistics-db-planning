@@ -17,9 +17,13 @@ namespace DataPlanning.Data
         public DbSet<HandReceiptItem> HandReceiptItems { get; set; }
         public DbSet<HandReceiptVerification> HandReceiptVerifications { get; set; }
         public DbSet<HardwareItem> HardwareItems { get; set; }
+        public DbSet<Inventory> Inventories { get; set; }
+        public DbSet<InventoryItem> InventoryItems { get; set; }
+        public DbSet<InventoryVerification> InventoryVerifications { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<ItemCategory> ItemCategories { get; set; }
-        public DbSet<ItemDecomission> ItemDecomissions { get; set; }
+        public DbSet<ItemDecommission> ItemDecommissions { get; set; }
+        public DbSet<ItemDecommissionVerification> ItemDecommissionVerifications { get; set; }
         public DbSet<ItemGroup> ItemGroups { get; set; }
         public DbSet<ItemGroupApproval> ItemGroupApprovals { get; set; }
         public DbSet<ItemGroupCategory> ItemGroupCategories { get; set; }
@@ -75,11 +79,6 @@ namespace DataPlanning.Data
                 .HasOne(x => x.RecordUser)
                 .WithMany(x => x.RecordHandReceiptVerifications)
                 .HasForeignKey(x => x.RecordUserId);
-
-            modelBuilder.Entity<Inventory>()
-                .HasOne(x => x.LogUser)
-                .WithMany(x => x.LogInventories)
-                .HasForeignKey(x => x.LogUserId);
 
             modelBuilder.Entity<Transfer>()
                 .HasOne(x => x.DestinationRecord)

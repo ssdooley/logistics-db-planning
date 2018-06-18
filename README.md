@@ -107,6 +107,7 @@
 ### Inventory
 * `Inventory.cs`
 * `InventoryItem.cs`
+* `InventoryVerification.cs`
 #### Supplemental Tables
 * `Item.cs`
 * `PropertyRecords.cs`
@@ -142,10 +143,11 @@
 
 ***
 
-### Item Decomission
-* `ItemDecomission.cs`
+### Item Decommission
+* `ItemDecommission.cs`
+* `ItemDecommissionVerification.cs`
 #### Supplemental Tables
 * `Item.cs`
 * `User.cs`  
 
-![item-decomission-diagram](./diagrams/item-decomission-diagram.png)
+![item-decommission-diagram](./diagrams/item-decommission-diagram.png)

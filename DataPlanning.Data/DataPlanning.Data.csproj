@@ -137,9 +137,11 @@
     <Compile Include="HandReceiptVerification.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="InventoryItem.cs" />
+    <Compile Include="InventoryVerification.cs" />
     <Compile Include="ItemCategory.cs" />
     <Compile Include="Item.cs" />
-    <Compile Include="ItemDecomission.cs" />
+    <Compile Include="ItemDecommission.cs" />
+    <Compile Include="ItemDecommissionVerification.cs" />
     <Compile Include="ItemReceipt.cs" />
     <Compile Include="Manufacturer.cs" />
     <Compile Include="Migrations\20180608152405_initial.cs" />
@@ -165,6 +167,26 @@
     <Compile Include="Migrations\20180615153727_inventory-log-user.cs" />
     <Compile Include="Migrations\20180615153727_inventory-log-user.designer.cs">
       <DependentUpon>20180615153727_inventory-log-user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180618130013_inventory-verification.cs" />
+    <Compile Include="Migrations\20180618130013_inventory-verification.designer.cs">
+      <DependentUpon>20180618130013_inventory-verification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180618130430_verification-date.cs" />
+    <Compile Include="Migrations\20180618130430_verification-date.designer.cs">
+      <DependentUpon>20180618130430_verification-date.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180618130745_remove-inventory-date-completed.cs" />
+    <Compile Include="Migrations\20180618130745_remove-inventory-date-completed.designer.cs">
+      <DependentUpon>20180618130745_remove-inventory-date-completed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180618131425_rename-decommission.cs" />
+    <Compile Include="Migrations\20180618131425_rename-decommission.designer.cs">
+      <DependentUpon>20180618131425_rename-decommission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180618134258_item-decommission-verification.cs" />
+    <Compile Include="Migrations\20180618134258_item-decommission-verification.designer.cs">
+      <DependentUpon>20180618134258_item-decommission-verification.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AppDbContextModelSnapshot.cs" />
     <Compile Include="PropertyCustodian.cs" />

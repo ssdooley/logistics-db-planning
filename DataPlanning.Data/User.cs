@@ -17,8 +17,9 @@ namespace DataPlanning.Data
         public List<HandReceiptVerification> LogHandReceiptVerifications { get; set; }
         public List<HandReceiptVerification> RecordHandReceiptVerifications { get; set; }
         public List<Inventory> Inventories { get; set; }
-        public List<Inventory> LogInventories { get; set; }
-        public List<ItemDecomission> ItemDecomissions { get; set; }
+        public List<InventoryVerification> InventoryVerifications { get; set; }
+        public List<ItemDecommission> ItemDecommissions { get; set; }
+        public List<ItemDecommissionVerification> ItemDecommissionVerifications { get; set; }
         public List<ItemGroup> ItemGroups { get; set; }
         public List<ItemGroupApproval> ItemGroupApprovals { get; set; }
         public List<ItemReceipt> ItemReceipts { get; set; }

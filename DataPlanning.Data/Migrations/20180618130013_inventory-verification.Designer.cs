@@ -4,14 +4,16 @@ using DataPlanning.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataPlanning.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180618130013_inventory-verification")]
+    partial class inventoryverification
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -261,6 +263,8 @@ namespace DataPlanning.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime?>("DateCompleted");
+
                     b.Property<DateTime>("DateStarted");
 
                     b.Property<int>("PropertyRecordId");
@@ -315,8 +319,6 @@ namespace DataPlanning.Data.Migrations
 
                     b.Property<int>("UserId");
 
-                    b.Property<DateTime>("VerificationDate");
-
                     b.HasKey("Id");
 
                     b.HasIndex("InventoryId")
@@ -333,7 +335,7 @@ namespace DataPlanning.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<bool>("IsDecommissioned");
+                    b.Property<bool>("IsDecomissioned");
 
                     b.Property<int>("ItemCategoryId");
 
@@ -378,15 +380,13 @@ namespace DataPlanning.Data.Migrations
                     b.ToTable("ItemCategory");
                 });
 
-            modelBuilder.Entity("DataPlanning.Data.ItemDecommission", b =>
+            modelBuilder.Entity("DataPlanning.Data.ItemDecomission", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DecommissionDate");
-
-                    b.Property<bool>("IsVerified");
+                    b.Property<DateTime>("DecomissionDate");
 
                     b.Property<int>("ItemId");
 
@@ -401,31 +401,7 @@ namespace DataPlanning.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("ItemDecommission");
-                });
-
-            modelBuilder.Entity("DataPlanning.Data.ItemDecommissionVerification", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ItemDecommissionId");
-
-                    b.Property<string>("Remarks");
-
-                    b.Property<int>("UserId");
-
-                    b.Property<DateTime>("VerificationDate");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ItemDecommissionId")
-                        .IsUnique();
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("ItemDecommissionVerification");
+                    b.ToTable("ItemDecomission");
                 });
 
             modelBuilder.Entity("DataPlanning.Data.ItemGroup", b =>
@@ -1118,28 +1094,15 @@ namespace DataPlanning.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("DataPlanning.Data.ItemDecommission", b =>
+            modelBuilder.Entity("DataPlanning.Data.ItemDecomission", b =>
                 {
                     b.HasOne("DataPlanning.Data.Item", "Item")
-                        .WithOne("ItemDecommission")
-                        .HasForeignKey("DataPlanning.Data.ItemDecommission", "ItemId")
+                        .WithOne("ItemDecomission")
+                        .HasForeignKey("DataPlanning.Data.ItemDecomission", "ItemId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("DataPlanning.Data.User", "User")
-                        .WithMany("ItemDecommissions")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("DataPlanning.Data.ItemDecommissionVerification", b =>
-                {
-                    b.HasOne("DataPlanning.Data.ItemDecommission", "ItemDecommission")
-                        .WithOne("ItemDecommissionVerification")
-                        .HasForeignKey("DataPlanning.Data.ItemDecommissionVerification", "ItemDecommissionId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("DataPlanning.Data.User", "User")
-                        .WithMany("ItemDecommissionVerifications")
+                        .WithMany("ItemDecomissions")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });

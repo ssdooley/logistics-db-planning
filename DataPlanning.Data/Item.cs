@@ -11,11 +11,11 @@ namespace DataPlanning.Data
         public string Model { get; set; }
         public string Nsn { get; set; }
         public string ItemType { get; set; }
-        public bool IsDecomissioned { get; set; }
+        public bool IsDecommissioned { get; set; }
 
         public Order Order { get; set; }
         public ItemCategory ItemCategory { get; set; }
-        public ItemDecomission ItemDecomission { get; set; }
+        public ItemDecommission ItemDecommission { get; set; }
         public Manufacturer Manufacturer { get; set; }
 
         public List<InventoryItem> InventoryItems { get; set; }
